@@ -48,8 +48,4 @@
             <Private>False</Private>
         </Reference>
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Ui\" />
-    </ItemGroup>
 </Project>
