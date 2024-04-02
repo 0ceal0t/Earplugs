@@ -1,0 +1,10 @@
+{
+    "Author": "ocealot",
+    "Name": "Earplugs",
+    "Punchline": "Mute sound effects",
+    "Description": "Mute sound effects",
+    "ApplicableVersion": "any",
+    "Tags": [
+        "sound"
+    ]
+}
