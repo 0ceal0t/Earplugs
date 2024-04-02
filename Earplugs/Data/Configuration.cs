@@ -2,7 +2,7 @@ using Dalamud.Configuration;
 using Dalamud.Plugin;
 using System;
 
-namespace Earplugs {
+namespace Earplugs.Data {
     [Serializable]
     public class Configuration : IPluginConfiguration {
         public int Version { get; set; } = 0;
@@ -13,6 +13,12 @@ namespace Earplugs {
 
         public void Initialize( DalamudPluginInterface pluginInterface ) {
             PluginInterface = pluginInterface;
+        }
+
+        public bool GetOverrideVolume( string path, int idx, out float volume ) {
+            volume = 0;
+
+            return false;
         }
 
         public void Save() {

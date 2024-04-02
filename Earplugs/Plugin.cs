@@ -1,6 +1,7 @@
 using Dalamud.Game.Command;
 using Dalamud.Interface.Windowing;
 using Dalamud.Plugin;
+using Earplugs.Data;
 using Earplugs.Interop;
 using Earplugs.Ui;
 
