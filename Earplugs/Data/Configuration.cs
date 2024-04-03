@@ -9,6 +9,7 @@ namespace Earplugs.Data {
         public int Version { get; set; } = 0;
 
         public bool Enabled = true;
+        public int LogLimit = 1000;
         public List<FilterCategory> Categories = [];
 
         [NonSerialized]

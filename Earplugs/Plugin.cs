@@ -11,8 +11,8 @@ namespace Earplugs {
         private const string CommandName = "/earplugs";
 
         private readonly WindowSystem WindowSystem = new( "Earplugs" );
-        private readonly MainWindow MainWindow;
 
+        public static MainWindow MainWindow { get; private set; }
         public static Configuration Configuration { get; private set; }
         public static SoundHandler SoundHandler { get; private set; }
 

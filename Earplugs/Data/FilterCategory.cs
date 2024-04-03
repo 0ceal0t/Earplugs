@@ -3,6 +3,8 @@ using Dalamud.Interface.Utility.Raii;
 using ImGuiNET;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
 
 namespace Earplugs.Data {
     [Serializable]
@@ -11,7 +13,7 @@ namespace Earplugs.Data {
         public bool Enabled = true;
         public List<Filter> Filters = [];
 
-        public bool Draw() {
+        public bool Draw( string searchInput ) {
             using( var style = ImRaii.PushStyle( ImGuiStyleVar.ItemSpacing, ImGui.GetStyle().ItemInnerSpacing ) ) {
                 if( ImGui.Checkbox( "##Enabled", ref Enabled ) ) Plugin.Configuration.Save();
 
@@ -40,16 +42,15 @@ namespace Earplugs.Data {
                 if( !ImGui.CollapsingHeader( $"{Name}###Header" ) ) return false;
             }
 
-            using var indent = ImRaii.PushIndent( 10f );
-
-            DrawTable();
+            DrawTable( searchInput );
 
             ImGui.Separator();
 
             return false;
         }
 
-        private void DrawTable() {
+        private void DrawTable( string searchInput ) {
+            using var style = ImRaii.PushStyle( ImGuiStyleVar.CellPadding, new Vector2( 4, 4 ) );
             using var table = ImRaii.Table( "Table", 4,
                 ImGuiTableFlags.RowBg | ImGuiTableFlags.NoHostExtendX | ImGuiTableFlags.SizingFixedFit | ImGuiTableFlags.PadOuterX );
             if( !table ) return;
@@ -64,6 +65,7 @@ namespace Earplugs.Data {
             // ===========
 
             foreach( var (item, idx) in Filters.WithIndex() ) {
+                if( !item.SearchMatches( searchInput ) ) continue;
                 using var _ = ImRaii.PushId( idx );
 
                 ImGui.TableNextRow();
@@ -104,5 +106,10 @@ namespace Earplugs.Data {
 
             return false;
         }
+
+        public bool SearchMatches( string search ) =>
+            string.IsNullOrEmpty( search )
+            || Name.Contains( search, StringComparison.CurrentCultureIgnoreCase )
+            || Filters.Any( x => x.SearchMatches( search ) );
     }
 }

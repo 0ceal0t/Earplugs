@@ -49,5 +49,7 @@ namespace Earplugs.Data {
 
             return false;
         }
+
+        public bool SearchMatches( string search ) => string.IsNullOrEmpty( search ) || Path.Contains( search, StringComparison.CurrentCultureIgnoreCase );
     }
 }
