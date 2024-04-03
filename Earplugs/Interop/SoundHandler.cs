@@ -38,7 +38,7 @@ namespace Earplugs.Interop {
             var path = MemoryHelper.ReadStringNullTerminated( pathPtr ).Trim();
             if( string.IsNullOrEmpty( path ) ) return passedVolume;
 
-            if( Plugin.Configuration.GetOverrideVolume( path.ToLower(), idx, out var newVolume ) ) return newVolume;
+            if( Plugin.Configuration.GetOverrideVolume( path.ToLower(), idx, out var _volume ) ) return _volume;
 
             return passedVolume;
         }

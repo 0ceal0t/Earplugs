@@ -10,10 +10,11 @@ namespace Earplugs {
         public static string Name => "Earplugs";
         private const string CommandName = "/earplugs";
 
-        public WindowSystem WindowSystem = new( "Earplugs" );
-        public Configuration Configuration { get; private set; }
-        public SoundHandler SoundHandler { get; private set; }
-        public MainWindow MainWindow { get; private set; }
+        private readonly WindowSystem WindowSystem = new( "Earplugs" );
+        private readonly MainWindow MainWindow;
+
+        public static Configuration Configuration { get; private set; }
+        public static SoundHandler SoundHandler { get; private set; }
 
         public Plugin( DalamudPluginInterface pluginInterface ) {
             pluginInterface.Create<Services>();
@@ -27,11 +28,12 @@ namespace Earplugs {
 
             SoundHandler = new SoundHandler( this );
 
-            MainWindow = new( this );
+            MainWindow = new();
             WindowSystem.AddWindow( MainWindow );
 
-            Services.PluginInterface.UiBuilder.Draw += DrawUI;
-            Services.PluginInterface.UiBuilder.OpenConfigUi += DrawConfigUI;
+            Services.PluginInterface.UiBuilder.Draw += DrawUi;
+            Services.PluginInterface.UiBuilder.OpenConfigUi += OpenUi;
+            Services.PluginInterface.UiBuilder.OpenMainUi += OpenUi;
         }
 
         public void Dispose() {
@@ -45,11 +47,11 @@ namespace Earplugs {
             MainWindow.IsOpen = true;
         }
 
-        private void DrawUI() {
+        private void DrawUi() {
             WindowSystem.Draw();
         }
 
-        public void DrawConfigUI() {
+        public void OpenUi() {
             MainWindow.IsOpen = true;
         }
     }
