@@ -28,7 +28,7 @@ namespace Earplugs.Ui {
             }
 
             using( var tab = ImRaii.TabItem( "Log" ) ) {
-                if( tab ) DrawLog();
+                if( tab ) LogTab.Draw();
             }
 
         }
@@ -53,10 +53,6 @@ namespace Earplugs.Ui {
                 using var _ = ImRaii.PushId( idx );
                 if( item.Draw() ) break;
             }
-        }
-
-        private void DrawLog() {
-            // TODO
         }
     }
 }
