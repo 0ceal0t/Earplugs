@@ -16,7 +16,7 @@ namespace Earplugs {
         public static Configuration Configuration { get; private set; }
         public static SoundHandler SoundHandler { get; private set; }
 
-        public Plugin( DalamudPluginInterface pluginInterface ) {
+        public Plugin( IDalamudPluginInterface pluginInterface ) {
             pluginInterface.Create<Services>();
 
             Configuration = Services.PluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
@@ -26,7 +26,7 @@ namespace Earplugs {
                 HelpMessage = "Open config window"
             } );
 
-            SoundHandler = new SoundHandler( this );
+            SoundHandler = new SoundHandler();
 
             MainWindow = new();
             WindowSystem.AddWindow( MainWindow );
@@ -51,7 +51,7 @@ namespace Earplugs {
             WindowSystem.Draw();
         }
 
-        public void OpenUi() {
+        public static void OpenUi() {
             MainWindow.IsOpen = true;
         }
     }

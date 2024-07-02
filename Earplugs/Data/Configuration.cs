@@ -13,9 +13,9 @@ namespace Earplugs.Data {
         public List<FilterCategory> Categories = [];
 
         [NonSerialized]
-        private DalamudPluginInterface PluginInterface;
+        private IDalamudPluginInterface PluginInterface;
 
-        public void Initialize( DalamudPluginInterface pluginInterface ) {
+        public void Initialize( IDalamudPluginInterface pluginInterface ) {
             PluginInterface = pluginInterface;
         }
 
