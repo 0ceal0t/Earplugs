@@ -6,7 +6,7 @@
         <AssemblyTitle>Earplugs</AssemblyTitle>
         <Company></Company>
         <Product>Earplugs</Product>
-        <Version>0.0.0.2</Version>
+        <Version>0.0.0.3</Version>
         <Copyright></Copyright>
         <IsPackable>false</IsPackable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

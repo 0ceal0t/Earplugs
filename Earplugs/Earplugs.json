@@ -4,11 +4,11 @@
     "Punchline": "Mute sound effects",
     "Description": "Mute sound effects",
     "InternalName": "Earplugs",
-    "AssemblyVersion": "0.0.0.2",
+    "AssemblyVersion": "0.0.0.3",
     "RepoUrl": "https://github.com/0ceal0t/Earplugs",
     "ApplicableVersion": "any",
     "Tags": [
         "sound"
     ],
-    "DalamudApiLevel": 10
+    "DalamudApiLevel": 11
 }
