@@ -1,6 +1,6 @@
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Utility.Raii;
-using ImGuiNET;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -39,7 +39,7 @@ namespace Earplugs.Ui {
 
             ImGuiListClipperPtr clipper;
             unsafe {
-                clipper = new ImGuiListClipperPtr( ImGuiNative.ImGuiListClipper_ImGuiListClipper() );
+                clipper = new ImGuiListClipperPtr( ImGuiNative.ImGuiListClipper() );
             }
 
             clipper.Begin( searchPaths.Count );
